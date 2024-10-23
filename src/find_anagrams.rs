@@ -39,9 +39,9 @@ fn find_anagrams(input_string: String, search: String) -> HashMap<i32, String> {
         return HashMap::new();
     }
     let mut found_indexes :HashMap<i32, String> = HashMap::new();
-    for (index, c) in input_string.chars().enumerate() {
+    for (index, _c) in input_string.chars().enumerate() {
         if index + search.len() <= input_string.len() {
-            let mut sub_string = input_string[index..index + search.len()].to_string();
+            let sub_string = input_string[index..index + search.len()].to_string();
             let mut sub_string_chars: Vec<char> = sub_string.chars().collect();
             sub_string_chars.sort();
             let sorted_sub_string: String = sub_string_chars.iter().collect();
@@ -56,10 +56,10 @@ fn find_anagrams(input_string: String, search: String) -> HashMap<i32, String> {
 
 }
 
-fn main() {
+pub fn main() {
     let input_string: String = "abab".to_string();
     let anagram_search: String = "ab".to_string();
-    let anagram_indices = find_anagrams(input_string, anagram_search);
+    let anagram_indices: HashMap<i32, String> = find_anagrams(input_string, anagram_search);
     println!("Anagram indices: {:?}", anagram_indices);
 
 
